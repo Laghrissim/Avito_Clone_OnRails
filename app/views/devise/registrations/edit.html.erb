@@ -1,0 +1,170 @@
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+ 
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+
+
+
+            <form id="login">
+                <div class="bg-white dark:bg-gray-800">
+                    <div class="container mx-auto bg-white dark:bg-gray-800 rounded">
+                        <div class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5 bg-white dark:bg-gray-800">
+                            <div class="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center">
+                                <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">Profile</p>
+                                <div class="ml-2 cursor-pointer text-gray-600 dark:text-gray-400">
+                                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg4.svg" alt="info">
+                                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg4dark.svg" alt="info">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mx-auto">
+                            <div class="xl:w-9/12 w-11/12 mx-auto xl:mx-0">
+                                <div class="rounded relative mt-8 h-48">
+                                    <img src="https://cdn.tuk.dev/assets/webapp/forms/form_layouts/form1.jpg" alt="" class="w-full h-full object-cover rounded absolute shadow" />
+                                    <div class="absolute bg-black opacity-50 top-0 right-0 bottom-0 left-0 rounded"></div>
+                                    <div class="flex items-center px-3 py-2 rounded absolute right-0 mr-4 mt-4 cursor-pointer">
+                                        <p class="text-xs text-gray-100">Change Cover Photo</p>
+                                        <div class="ml-2 text-gray-100">
+                                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
+                                        </div>
+                                    </div>
+                                    <div class="w-20 h-20 rounded-full bg-cover bg-center bg-no-repeat absolute bottom-0 -mb-10 ml-12 shadow flex items-center justify-center">
+                                        <img src="https://cdn.tuk.dev/assets/webapp/forms/form_layouts/form2.jpg" alt="" class="absolute z-0 h-full w-full object-cover rounded-full shadow top-0 left-0 bottom-0 right-0" />
+                                        <div class="absolute bg-black opacity-50 top-0 right-0 bottom-0 left-0 rounded-full z-0"></div>
+                                        <div class="cursor-pointer flex flex-col justify-center items-center z-10 text-gray-100">
+                                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg1.svg" alt="Edit">
+                                            <p class="text-xs text-gray-100">Edit Picture</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-16 flex flex-col xl:w-2/6 lg:w-1/2 md:w-1/2 w-full">
+                                    <label for="username" class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Username</label>
+                                    
+                                     <%= f.text_field :username, value: current_user.email.split('@').first ,class:"border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 bg-transparent placeholder-gray-500 text-gray-600 dark:text-gray-400"%>
+                                    
+                                </div>
+                                  <div class="mt-5 flex flex-col xl:w-2/6 lg:w-1/2 md:w-1/2 w-full">
+                                    <label for="ville" class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Ville</label>
+                                     
+                                     <%= f.text_field :ville, value: current_user.ville.name ,class:"border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 bg-transparent placeholder-gray-500 text-gray-600 dark:text-gray-400"%>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container mx-auto bg-white dark:bg-gray-800 mt-10 rounded px-4">
+                        <div class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5">
+                            <div class="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center">
+                                <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">Personal Information</p>
+                                <div class="ml-2 cursor-pointer text-gray-600 dark:text-gray-400">
+                                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg4.svg" alt="info">
+                                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/simple_form-svg4dark.svg" alt="info">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mx-auto pt-4">
+                            <div class="container mx-auto">
+                                <form class="my-6 w-11/12 mx-auto xl:w-full xl:mx-0">
+                                    <div class="xl:w-1/4 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                                        <label for="email" class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Email</label>
+                                        <div class="border border-green-400 shadow-sm rounded flex">
+                                              <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"pl-3 py-3 w-full text-sm focus:outline-none placeholder-gray-500 rounded bg-transparent text-gray-600 dark:text-gray-400" %>
+                                   
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="xl:w-1/4  lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                                        <label for="Email" class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Password (leave blank if you don't want to change it)</label>
+                                        <div class="border shadow-sm rounded flex">
+                                             <%= f.password_field :password, autocomplete: "new-password" ,class:"pl-3 py-3 w-full text-sm focus:outline-none placeholder-gray-500 rounded bg-transparent text-gray-600 dark:text-gray-400"%>
+                                            
+                                        </div>
+                                        
+                                    </div>
+      
+                                           
+                                      <div class="xl:w-1/4 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                                        <label for="Email" class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Password confirmation</label>
+                                        <div class="border shadow-sm rounded flex">
+                                            
+                                           <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"pl-3 py-3 w-full text-sm focus:outline-none placeholder-gray-500 rounded bg-transparent text-gray-600 dark:text-gray-400"%>
+                                           
+                                        </div>
+                                      
+                                    </div>
+                                      <div class="xl:w-1/4 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                                        <label for="Email" class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Current password </label>
+                                        <div class="border shadow-sm rounded flex">
+                                                <%= f.password_field :current_password, autocomplete: "current-password", class:"pl-3 py-3 w-full text-sm focus:outline-none placeholder-gray-500 rounded bg-transparent text-gray-600 dark:text-gray-400"%>
+        
+                                        </div>
+                                      
+                                    </div>
+                                
+                                   
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="container mx-auto w-11/12 xl:w-full">
+                        <div class="w-full py-4 sm:px-0 bg-white dark:bg-gray-800 flex justify-end">
+                        <%= link_to "Back", :back ,class:"bg-gray-200 focus:outline-none transition duration-150 ease-in-out hover:bg-gray-300 dark:bg-gray-700 rounded text-indigo-600 dark:text-indigo-600 px-6 py-2 text-xs mr-4 focus:ring-2 focus:ring-offset-2 focus:ring-gray-700"%>
+                        <%= f.submit "Update",class:"focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 focus:outline-none transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-8 py-2 text-sm" %>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <style>
+                .checkbox:checked {
+                    /* Apply class right-0*/
+                    right: 0;
+                }
+                .checkbox:checked + .toggle-label {
+                    /* Apply class bg-indigo-700 */
+                    background-color: #4c51bf;
+                }
+            </style>
+          
+          
+        <script>
+            let form = document.getElementById("login");
+form.addEventListener(
+    "submit",
+    function (event) {
+        event.preventDefault();
+        let elements = form.elements;
+        let payload = {};
+        for (let i = 0; i < elements.length; i++) {
+            let item = elements.item(i);
+            switch (item.type) {
+                case "checkbox":
+                    payload[item.name] = item.checked;
+                    break;
+                case "submit":
+                    break;
+                default:
+                    payload[item.name] = item.value;
+                    break;
+            }
+        }
+        // Place your API call here to submit your payload.
+        console.log("payload", payload);
+    },
+    true
+);
+
+        </script>
+
+
+
+<% end %>
+

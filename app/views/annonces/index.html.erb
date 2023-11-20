@@ -1,0 +1,68 @@
+<style>
+#btn{
+
+      position: relative;
+    bottom: 182px;
+    left: 312px; 
+}
+</style>
+<% if flash[:notice] %>
+ 
+  <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-emerald-500 flex m-8 ">
+  <span class="text-xl inline-block mr-5 align-middle">
+    <i class="fas fa-bell" />
+  </span>
+  <span class="inline-block align-middle mr-8">
+    <b class="capitalize">Sucess!</b> T<%= flash[:notice] %>
+  </span>
+  <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none">
+    <span>×</span>
+  </button>
+</div>
+<% end %>
+
+
+<div class="p-10 grid grid-cols-3 gap-5">
+
+<% @annonces.each do |annonce| %>
+
+
+<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-5">
+    <!--Card 1-->
+  
+    <div class="rounded overflow-hidden shadow-lg">
+       <a href="<%= annonce_path(annonce) %>">
+        <% if annonce.images.attached? %>
+             <%= image_tag url_for(annonce.images.first.variant(resize_to_limit: [300, 300])), class: "w-full h-400" %>
+      <% end %>
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2"><%=annonce.title%>   <%= link_to "Update", edit_annonce_path(annonce), class: "bg-yellow-500 text-white active:bg-yellow-600 font-bold uppercase text-xs px-2 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" %>
+       
+      </div>
+        <p class="text-gray-700 text-base">
+          <%=annonce.description%> 
+        </p>
+      </div>
+      </a>
+      <div class="px-6 pt-4 pb-2">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#<%=annonce.price%>Dh</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#<%=annonce.ville.name%></span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">##<%=annonce.etat%></span>
+   
+      </div>
+      <%= button_to annonce_path(annonce), method: :delete, data: { confirm: "Are you sure?" }, id: "btn",class: "bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-2 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mb-1 ease-linear transition-all duration-150" do%>
+      
+        Delete
+      <%end%>
+       
+    </div>
+
+   
+
+    
+   
+  </div>
+
+<% end %>
+
+</div>
